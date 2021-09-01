@@ -3,7 +3,7 @@
     Dockerfile -->(build)--> Imagem -->(run)--> Container
 
 Arquivo de definição onde é possível preparar todo ambiente a partir de um script de execução. Básicamente é um
-arquivo texto com instruções, comandos e passos e normalmente seriam executados manualmente.
+arquivo texto com instruções, comandos e passos que normalmente seriam executados manualmente.
 
 Facilita a criação e manutenção de containers. Permite a publicação da imagem no Docker Hub e desta forma é 
 possível distribui-la.
