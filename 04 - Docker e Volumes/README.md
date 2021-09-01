@@ -1,6 +1,6 @@
 # Docker e Volumes
 
- - Uma container precisa ter a persistência de dados habilitada para manter alterações, por exemplo: inserir, 
+ - Um container precisa ter a persistência de dados habilitada para manter alterações, por exemplo: inserir, 
  editar arquivos.
 
  - A solução para persistência de dados em container são os Volumes, também chamados de Volumes de Dados.
