@@ -48,7 +48,7 @@ próprio driver, deve escolher entre os drivers disponibilizados pelo docker.
 
  - Driver de rede mais simples de utilizar, pois demanda pouca configuração;
  
- - Assemelha-se à rede padrão do Docker denominada "bridgre" - ***o docker tem uma rede padrão chamada “bridge”*** 
+ - Assemelha-se à rede padrão do Docker denominada "bridge" - ***o docker tem uma rede padrão chamada “bridge”*** 
  ***que utiliza um driver também chamado de “bridge“.***;
  
  - As redes criadas pelo usuário com o driver bridge tem todas as funcionalidades descritas na rede padrão, 
