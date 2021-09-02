@@ -1,0 +1,84 @@
+version: "3"
+
+services:
+  # definindo a criação de um serviço
+  nginx:
+    build:
+      # informando o PATH para o dockerfile
+      dockerfile: ./docker/nginx.dockerfile
+      # informando o PATH para executar o build
+      context: .
+    # nome para a imagem
+    image: username/nginx_fusion:v1
+    # nome para o container
+    container_name: nginx
+    # configurando a exposição de portas host-port:container-port
+    ports:
+      - "8080:80"
+    # configurando em qual rede o container será estabelecido
+    networks:
+      - nwfusion
+    # adicionando dependencias - executa quando as dependencias estiverem prontas
+    depends_on:
+      - fusion1
+      - fusion2
+      - fusion3
+
+  pgfusion:
+    build:
+      dockerfile: ./docker/pgfusion.dockerfile
+      context: .
+    image: username/pgfusion:v1
+    container_name: pgfusion
+    ports:
+      - "5432"
+    networks:
+      - nwfusion
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+  fusion1:
+    build:
+      dockerfile: ./docker/fusion.dockerfile
+      context: .
+    image: username/fusion:v1
+    container_name: fusion1
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - pgfusion
+
+  fusion2:
+    build:
+      dockerfile: ./docker/fusion.dockerfile
+      context: .
+    image: username/fusion:v1
+    container_name: fusion2
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - pgfusion
+  
+  fusion3:
+    build:
+      dockerfile: ./docker/fusion.dockerfile
+      context: .
+    image: username/fusion:v1
+    container_name: fusion3
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - pgfusion
+
+networks:
+  nwfusion:
+    driver: bridge
+
+volumes:
+  pgdata:
